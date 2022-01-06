@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd 
 import matplotlib.pyplot as plt  
 import functions
+from functions.ReadFtmMeasFile import ReadFtmMeasFile
 
 # Import dataset 
 dataset_path =r'E:\work\masters\Trento\Academics\Semesters\Year 1 Semester 1\146069 Next Generation Networks\project\execution\data\Data\RTT_data.csv' 
@@ -56,7 +57,7 @@ print('\nSelected Row:\n',rtt_data.iloc[1])
 print('\nSelected Rows:\n',rtt_data.iloc[1:4])
 
 # Read specific data point described by row and column
-print('\nSpecific dataum:\n',rtt_data.iloc[2,3])
+print('\nSpecific datum:\n',rtt_data.iloc[2,3])
 
 # Iterate through values
 #for index, row in rtt_data.iterrows():
@@ -68,13 +69,16 @@ print('\nSpecific dataum:\n',rtt_data.iloc[2,3])
 # Describe the data
 rtt_data.describe() 
 
-# rtt_data.sort()
-exit()
+# rtt_data.sort() 
+
+# rtt_data filter operations
+
 # Plot the AP X positions for all access points
 plt.plot(rtt_data['AP_positionX[m]'], color='green', marker ='o')
 plt.title('Access Point Positions X dimension')
 plt.xlabel('Access Point ID') 
 plt.ylabel('X distance (meters) ')
+plt.show()
 
 
 # Plot the AP X positions for all access points
@@ -82,12 +86,14 @@ plt.plot(rtt_data['AP_positionY[m]'],marker ='o')
 plt.title('Access Point Positions Y dimension')
 plt.xlabel('Access Point ID') 
 plt.ylabel('Y distance (meters) ')
+plt.show()
 
 # Plot the AP X positions for all access points
 plt.plot(rtt_data['AP_positionZ[m]'],color='red', marker ='o')
 plt.title('Access Point Positions Z dimension')
 plt.xlabel('Access Point ID') 
 plt.ylabel('Z distance (meters) ')
+plt.show()
 
 # Plot all three dimensions on the same set of subplots
 plt.figure(figsize=(15, 3))
@@ -107,7 +113,7 @@ plt.plot(rtt_data['AP_positionZ[m]'],color='red', marker ='o')
 plt.title('Access Point Positions Z dimension')
 plt.xlabel('Access Point ID') 
 plt.ylabel('Z distance (meters) ')
-
+plt.show()
 
 # Plot all three dimensions on the same set of subplots
 
@@ -117,6 +123,7 @@ plt.plot(rtt_data['AP_positionZ[m]'],color='red', marker ='o')
 plt.title('Access Point Positions all dimensions')
 plt.xlabel('Access Point ID')
 plt.ylabel('Distance (meters)')
+plt.show()
 
 # 3D scatter plot 
 from mpl_toolkits import mplot3d
@@ -126,12 +133,11 @@ ax.scatter3D(rtt_data['AP_positionX[m]'], rtt_data['AP_positionY[m]'], rtt_data[
 ax.set_xlabel('x (m)')
 ax.set_ylabel('y (m)')
 ax.set_zlabel('z (m)')
-
+plt.show()
 
 # *****************************************************************************
 # *****************************************************************************
 #  Communications theory perspective of the data     **************************
 #                                                                             *
 # *****************************************************************************
-
 

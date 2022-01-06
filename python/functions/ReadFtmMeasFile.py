@@ -1,18 +1,13 @@
-# Copyright (C) 2018 Intel Corporation
-# SPDX-License-Identifier: BSD-3-Clause
 
-import numpy as np
-import csv
-import pandas as pd 
-
-dataset = r'E:\work\masters\Trento\Academics\Semesters\Year 1 Semester 1\146069 Next Generation Networks\project\execution\data\Data\RTT_data.csv'
 def ReadFtmMeasFile(measFilePath): 
+    import numpy as np
+    import pandas as pd 
     # This function will read the data CSV file.
     # Inputs:
     # measFilePath - full path of the provided RTT_data.csv file
     # Outputs:
-    # data - numeric matrix containing the entire dataset
-    # ind - a utility struct with the indexes of each type of data in the output matrix "data"
+    # data - dataframe containing the entire dataset
+    # ind - a dictionary with the indexes of each type of data in the output matrix "data"
         
     ## Read CSV file as matrix
     data = pd.read_csv(measFilePath) 
@@ -37,5 +32,3 @@ def ReadFtmMeasFile(measFilePath):
     
     return data,ind
 
-dat,indd=ReadFtmMeasFile(dataset) 
-print(dat)
