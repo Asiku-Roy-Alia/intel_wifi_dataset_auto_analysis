@@ -9,16 +9,17 @@ function PlotFTMchannel(measTable, ind, measIndex2Plot)
 %       respectively
 % measIndex2Plot - an integer in the range [1,29581] (size of the dataset) that chooses which FTM transaction to plot.
 
-Channels_in_freq_domain = measTable(:,ind.channels); % take complex frequency domain channels information from the CSV matrix
+Channels_in_freq_domain = measTable(:,ind.channels) % take complex frequency domain channels information from the CSV matrix
 % NOTE: The amplitude of the channels is usually not indicative of the SNR/RSSI. The channels were scaled by the hardware.
 
 % The "tone_frequencies" variable below is used to map which baseband frequency, in MHz, corresponds to each of the 114 tones. 
 % Note that for 40MHz WiFi, the 3 tones around the DC are never observed
-tone_frequencies = 312.5E3*[-58:-2, 2:58] / 1E6; % in MHz 
+
+tone_frequencies = 312.5E3*[-58:-2, 2:58] / 1E6 % in MHz 
 % reshape the chosen example channel such that the first dimension is the tone
 % index, the second is the antenna and the third is the device (client is "side 1", AP is "side 2")
 example_channel_in_freq_domain = reshape(Channels_in_freq_domain(measIndex2Plot,:), ...
-                                    [114, 2, 2]);
+                                    [114, 2, 2])
 
 % open figure
 figure; title('Example channel in frequency domain');

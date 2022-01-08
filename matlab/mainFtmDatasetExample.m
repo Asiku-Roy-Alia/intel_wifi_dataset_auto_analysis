@@ -41,9 +41,9 @@ end
 PlotFTMpositions(measTable, tableIndexes)
 
 % Plot an example channel in the frequency domain
-PlotFTMchannel(measTable, tableIndexes, measIndex2Plot)
+%PlotFTMchannel(measTable, tableIndexes, measIndex2Plot)
 
 % Perform simple estimation for the range between APs and clients.
 % Also plots the results as a CDF of the range errors.
-SimpleFTMrangeEstimation(measTable, tableIndexes)
+%SimpleFTMrangeEstimation(measTable, tableIndexes)
 end
