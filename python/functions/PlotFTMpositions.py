@@ -11,7 +11,6 @@ def PlotFTMpositions(measTable,office_path,ind):
     if os.path.exist(str('Office1_40MHz_VenueFile.mat')):
         scipy.io.loadmat('Office1_40MHz_VenueFile.mat')
 
-
     plt.legend('Client positions','AP positions')
     plt.title('User and AP positions')
     plt.xlabel('Local frame X [m]')
