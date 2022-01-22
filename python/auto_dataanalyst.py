@@ -80,7 +80,6 @@ plt.xlabel('Access Point ID')
 plt.ylabel('X distance (meters) ')
 plt.show()
 
-
 # Plot the AP X positions for all access points
 plt.plot(rtt_data['AP_positionY[m]'],marker ='o') 
 plt.title('Access Point Positions Y dimension')
@@ -108,12 +107,14 @@ plt.title('Access Point Positions Y dimension')
 plt.xlabel('Access Point ID') 
 plt.ylabel('Y distance (meters) ')
 
+
 plt.subplot(133)
 plt.plot(rtt_data['AP_positionZ[m]'],color='red', marker ='o')
 plt.title('Access Point Positions Z dimension')
 plt.xlabel('Access Point ID') 
 plt.ylabel('Z distance (meters) ')
 plt.show()
+
 
 # Plot all three dimensions on the same set of subplots
 
@@ -136,8 +137,7 @@ ax.set_zlabel('z (m)')
 plt.show()
 
 # *****************************************************************************
-# *****************************************************************************
+#                                                                             *
 #  Communications theory perspective of the data     **************************
 #                                                                             *
 # *****************************************************************************
-

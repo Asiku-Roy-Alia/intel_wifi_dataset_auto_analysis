@@ -4,7 +4,7 @@
 import os
 import matplotlib.pyplot as plt
 import scipy
-    
+
 def PlotFTMpositions(measTable,office_path,ind): 
 
     # search in path if the office map file exists
@@ -16,5 +16,4 @@ def PlotFTMpositions(measTable,office_path,ind):
     plt.xlabel('Local frame X [m]')
     plt.ylabel('Local frame Y [m]')
 
-    return
-    
+    return 
