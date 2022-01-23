@@ -61,6 +61,9 @@ def main():
 
     else:
         default(rtt_data, sleep_time)
+        dat_v(rtt_data, sleep_time)
+        comm_v(rtt_data, sleep_time)
+
     
 
 def comm(rtt_data, sleep_time):
@@ -694,6 +697,7 @@ def dat_v(rtt_data,sleep_time):
 
 def default():
     print('Combined mode')
+    
 
 if __name__ =="__main__":
     main()
