@@ -60,7 +60,7 @@ def main():
         dat_v(rtt_data, sleep_time)
 
     else:
-        default()
+        default(rtt_data, sleep_time)
     
 
 def comm(rtt_data, sleep_time):
@@ -697,7 +697,3 @@ def default():
 
 if __name__ =="__main__":
     main()
-
-
-
-
