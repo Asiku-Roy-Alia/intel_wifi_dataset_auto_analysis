@@ -60,7 +60,7 @@ def main():
         dat_v(rtt_data, sleep_time)
 
     else:
-        default(rtt_data, sleep_time)
+        default()
         dat_v(rtt_data, sleep_time)
         comm_v(rtt_data, sleep_time)
 
@@ -125,7 +125,7 @@ def comm(rtt_data, sleep_time):
     plt.subplot(2,2,1)
     plt.plot(tone_frequencies, client_magnitude, tone_frequencies,client_magnitude1)
     plt.title('Channel amplitude at client side')
-    plt.xlabel('Tone frequency[MHz]')
+    #plt.xlabel('Tone frequency[MHz]')
     plt.ylabel('Amplitude[dB]')
     
 
@@ -133,7 +133,7 @@ def comm(rtt_data, sleep_time):
     plt.subplot(2,2,2)
     plt.plot(tone_frequencies,ap_magnitude,tone_frequencies,ap_magnitude1) # 20*np.log10
     plt.title('Channel amplitude at AP side')
-    plt.xlabel('Tone frequency[MHz]')
+    #plt.xlabel('Tone frequency[MHz]')
     plt.ylabel('Amplitude[dB]')
 
     # plot client side phase
@@ -205,14 +205,14 @@ def comm(rtt_data, sleep_time):
     plt.subplot(2,2,1)
     plt.plot(tone_frequencies, client_magnitude, tone_frequencies,client_magnitude1)
     plt.title('Channel amplitude at client side')
-    plt.xlabel('Tone frequency[MHz]')
+    #plt.xlabel('Tone frequency[MHz]')
     plt.ylabel('Amplitude[dB]')
 
     # plot AP side amplitude
     plt.subplot(2,2,2)
     plt.plot(tone_frequencies,ap_magnitude,tone_frequencies,ap_magnitude1) # 20*np.log10
     plt.title('Channel amplitude at AP side')
-    plt.xlabel('Tone frequency[MHz]')
+    #plt.xlabel('Tone frequency[MHz]')
     plt.ylabel('Amplitude[dB]')
 
 
@@ -304,7 +304,7 @@ def comm_v(rtt_data, sleep_time):
     plt.subplot(2,2,1)
     plt.plot(tone_frequencies, client_magnitude, tone_frequencies,client_magnitude1)
     plt.title('Channel amplitude at client side')
-    plt.xlabel('Tone frequency[MHz]')
+    #plt.xlabel('Tone frequency[MHz]')
     plt.ylabel('Amplitude[dB]')
     
 
@@ -312,7 +312,7 @@ def comm_v(rtt_data, sleep_time):
     plt.subplot(2,2,2)
     plt.plot(tone_frequencies,ap_magnitude,tone_frequencies,ap_magnitude1) # 20*np.log10
     plt.title('Channel amplitude at AP side')
-    plt.xlabel('Tone frequency[MHz]')
+    #plt.xlabel('Tone frequency[MHz]')
     plt.ylabel('Amplitude[dB]')
 
     # plot client side phase
@@ -386,14 +386,14 @@ def comm_v(rtt_data, sleep_time):
     plt.subplot(2,2,1)
     plt.plot(tone_frequencies, client_magnitude, tone_frequencies,client_magnitude1)
     plt.title('Channel amplitude at client side')
-    plt.xlabel('Tone frequency[MHz]')
+    #plt.xlabel('Tone frequency[MHz]')
     plt.ylabel('Amplitude[dB]')
 
     # plot AP side amplitude
     plt.subplot(2,2,2)
     plt.plot(tone_frequencies,ap_magnitude,tone_frequencies,ap_magnitude1) # 20*np.log10
     plt.title('Channel amplitude at AP side')
-    plt.xlabel('Tone frequency[MHz]')
+    #plt.xlabel('Tone frequency[MHz]')
     plt.ylabel('Amplitude[dB]')
 
 
@@ -477,7 +477,7 @@ def dat(rtt_data,sleep_time):
     plt.xlabel('Access Point ID') 
     plt.ylabel('X distance (meters) ')
     plt.show()
-    time.sleep(sleep_time)
+    #time.sleep(sleep_time)
     plt.close()
 
     # Plot the AP X positions for all access points
@@ -486,7 +486,7 @@ def dat(rtt_data,sleep_time):
     plt.xlabel('Access Point ID') 
     plt.ylabel('Y distance (meters) ')
     plt.show()
-    time.sleep(sleep_time)
+    #time.sleep(sleep_time)
     plt.close()
 
     # Plot the AP X positions for all access points
@@ -495,7 +495,7 @@ def dat(rtt_data,sleep_time):
     plt.xlabel('Access Point ID') 
     plt.ylabel('Z distance (meters) ')
     plt.show()
-    time.sleep(sleep_time)
+    #time.sleep(sleep_time)
     plt.close()
 
     # Plot all three dimensions on the same set of subplots
@@ -510,7 +510,7 @@ def dat(rtt_data,sleep_time):
     plt.title('Access Point Positions Y dimension')
     plt.xlabel('Access Point ID') 
     plt.ylabel('Y distance (meters) ')
-    time.sleep(sleep_time)
+    #time.sleep(sleep_time)
     plt.close()
 
 
@@ -520,7 +520,7 @@ def dat(rtt_data,sleep_time):
     plt.xlabel('Access Point ID') 
     plt.ylabel('Z distance (meters) ')
     plt.show()
-    time.sleep(sleep_time)
+    #time.sleep(sleep_time)
     plt.close()
 
 
@@ -533,7 +533,7 @@ def dat(rtt_data,sleep_time):
     plt.xlabel('Access Point ID')
     plt.ylabel('Distance (meters)')
     plt.show()
-    time.sleep(sleep_time)
+    #time.sleep(sleep_time)
     plt.close()
 
     # 3D scatter plot 
@@ -545,7 +545,7 @@ def dat(rtt_data,sleep_time):
     ax.set_ylabel('y (m)')
     ax.set_zlabel('z (m)')
     plt.show()
-    time.sleep(sleep_time)
+    #time.sleep(sleep_time)
     plt.close()
 
 
@@ -618,7 +618,7 @@ def dat_v(rtt_data,sleep_time):
     plt.xlabel('Access Point ID') 
     plt.ylabel('X distance (meters) ')
     plt.show()
-    time.sleep(sleep_time)
+    #time.sleep(sleep_time)
     plt.close('all')
 
     print('Plot the AP Y positions for all access points')
@@ -628,7 +628,7 @@ def dat_v(rtt_data,sleep_time):
     plt.xlabel('Access Point ID') 
     plt.ylabel('Y distance (meters) ')
     plt.show()
-    time.sleep(sleep_time)
+    #time.sleep(sleep_time)
     plt.close()
 
     print('Plot the AP Z positions for all access points')
@@ -639,7 +639,7 @@ def dat_v(rtt_data,sleep_time):
     plt.xlabel('Access Point ID') 
     plt.ylabel('Z distance (meters) ')
     plt.show()
-    time.sleep(sleep_time)
+    #time.sleep(sleep_time)
     plt.close()
 
     print('Plot all three dimensions on the same set of subplots')
@@ -655,7 +655,7 @@ def dat_v(rtt_data,sleep_time):
     plt.title('Access Point Positions Y dimension')
     plt.xlabel('Access Point ID') 
     plt.ylabel('Y distance (meters) ')
-    time.sleep(sleep_time)
+    #time.sleep(sleep_time)
     plt.close()
 
 
@@ -665,7 +665,7 @@ def dat_v(rtt_data,sleep_time):
     plt.xlabel('Access Point ID') 
     plt.ylabel('Z distance (meters) ')
     plt.show()
-    time.sleep(sleep_time)
+    #time.sleep(sleep_time)
     plt.close()
 
 
@@ -678,7 +678,7 @@ def dat_v(rtt_data,sleep_time):
     plt.xlabel('Access Point ID')
     plt.ylabel('Distance (meters)')
     plt.show()
-    time.sleep(sleep_time)
+    #time.sleep(sleep_time)
     plt.close()
 
     print('3D scatter plot')
@@ -691,7 +691,7 @@ def dat_v(rtt_data,sleep_time):
     ax.set_ylabel('y (m)')
     ax.set_zlabel('z (m)')
     plt.show()
-    time.sleep(sleep_time)
+    #time.sleep(sleep_time)
     plt.close()
 
 
