@@ -42,8 +42,8 @@ def make_window(theme):
                     [sg.Combo(values=('Plot_ap_x', 'Plot_ap_y', 'Plot_ap_z',
                                       'Plot_on_the_same_set','Plot_on_one','3D_plot'),
                               default_value='Plot_ap_x', readonly=True, k='Combo'),
-                     sg.Button('Draw plot')],
-                    [sg.Text('use this to test whether the application is running well'),
+                     sg.Button('Draw plot')], 
+                    [sg.Text('Application running'),
                      sg.Image(data=sg.DEFAULT_BASE64_LOADING_GIF, enable_events=True, key='-GIF-IMAGE-'), ],
                     [sg.Multiline(key='Mul_line', size=(60,20))],
                     [sg.Button('Button'), sg.Button('Popup'),
@@ -82,7 +82,7 @@ def make_window(theme):
                     [sg.Button("Set Theme")]]
 
     layout = [[sg.Text('Input datapath'),
-               sg.Input(default_text=r'E:\Master\Next Generation Networks\ngn-20211230T204153Z-001\ngn\execution\data\Data\RTT_data.csv',
+               sg.Input(default_text=r'RTT_datasplit2.csv',
                         key='Input_dataset_path',expand_x=True,expand_y=True),
                sg.Button('Load_data'),
                sg.Button('Select and load')]]
@@ -93,7 +93,7 @@ def make_window(theme):
                               sg.Tab('Theming', theme_layout),
                               sg.Tab('Output', logging_layout)]], key='-TAB GROUP-')]]
 
-    return sg.Window('All Elements Demo', layout, right_click_menu=right_click_menu_def)
+    return sg.Window('Auto Data Analyst', layout, right_click_menu=right_click_menu_def)
 
 def draw_figure(canvas, figure):
     figure_canvas_agg = FigureCanvasTkAgg(figure, canvas)
