@@ -4,6 +4,12 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import time
+from functions.comm import comm
+from functions.comm_v import comm_v
+from functions.dat import dat
+from functions.dat_v import dat_v
+from functions.stats_model import stats_model
+
 
 def main():
     import argparse
@@ -49,29 +55,28 @@ def main():
 
     if mode=='c' and not verbosity_level:
         comm(rtt_data, sleep_time)
+        stats_model(rtt_data) 
         
     elif mode=='c' and verbosity_level:
         comm_v(rtt_data, sleep_time) 
+        stats_model(rtt_data)
 
     elif mode=='d' and not verbosity_level:
         dat(rtt_data, sleep_time)
+        stats_model(rtt_data)
 
     elif mode=='d' and verbosity_level:
         dat_v(rtt_data, sleep_time)
+        stats_model(rtt_data)
 
     else:
         default()
         dat_v(rtt_data, sleep_time)
         comm_v(rtt_data, sleep_time)
-
-    
-
-
-
+        stats_model(rtt_data)
 
 def default():
     print('Combined mode')
     
-
 if __name__ =="__main__":
     main()

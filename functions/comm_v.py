@@ -3,9 +3,17 @@ def comm_v(rtt_data, sleep_time):
     print('Verbose communications mode')
     
     import matplotlib.pyplot as plt
+    import time
+    import numpy as np
+    import random
+    import os
+
     data=rtt_data
     print('Communications mode')
-    # NB: The amplitude of the channels is usually not indicative of the SNR/RSSI. The channels were scaled by the hardware.
+    # NB: The amplitude of the channels is usually not indicative of the SNR/RSSI. 
+    # The channels were scaled by the hardware.
+
+    # Get range of tone frequencies
     freqz =312.5*1000 / 10**6   # MHz 
     tones =[freqz*i for i in range(-58,-1)] 
     tones2 = [freqz*i for i in range(2,59)]
@@ -14,19 +22,25 @@ def comm_v(rtt_data, sleep_time):
     
     print('\nTone frequencies used: \n', tone_frequencies)
     time.sleep(sleep_time)
-    # The "tone_frequencies" variable below is used to map which baseband frequency, in MHz, corresponds to each of the 114 tones.
+    # The "tone_frequencies" variable below is used to map which baseband frequency,
+    #  in MHz, corresponds to each of the 114 tones.
     # Note that for 40MHz WiFi, the 3 tones around the DC are never observed
 
-    measIndex2plot=22
+    measIndex2plot=random.randint(2,100) # Choose random index to plot
     print('\nChosen index to plot: ',measIndex2plot)
+
 
     Channel_selection = data.iloc[measIndex2plot,12:468]
     Channel_selection= np.array(Channel_selection)
+
+    # Replicate last channel value and append to channel for reshaping
     ch_mean=Channel_selection[-1]
     Channel_selection=np.append(Channel_selection,ch_mean )
     example_channel_in_freq_domain =np.reshape(Channel_selection,[4,114]) 
 
     print('\nSelected channels to plot: ', example_channel_in_freq_domain)
+
+    # Convert strings in channels to complex numbers
     fin_cplx_selection = np.zeros_like(example_channel_in_freq_domain)
 
     dim1=0
@@ -40,6 +54,7 @@ def comm_v(rtt_data, sleep_time):
     example_channel_in_freq_domain=np.array(fin_cplx_selection) 
 
     print('\nComplex channels selection: ', example_channel_in_freq_domain)
+    
     # Parameters for plot
 
     client_magnitude = np.abs(example_channel_in_freq_domain[0,])
@@ -95,7 +110,7 @@ def comm_v(rtt_data, sleep_time):
     plt.title('Channel phase at AP side')
     plt.xlabel('Tone frequency[MHz]')
     plt.ylabel('Phase[rad]')
-    plt.show()
+    plt.savefig('graphs/Sample_channel_magnitude_and_phase_response_verbose.jpg')
 
     dataset_columns = data.columns
     Channels_in_freq_domain = list(dataset_columns[12:467]) 
@@ -176,4 +191,10 @@ def comm_v(rtt_data, sleep_time):
     plt.title('Channel phase at AP side')
     plt.xlabel('Tone frequency[MHz]')
     plt.ylabel('Phase[rad]')
-    plt.show()
+    plt.savefig('graphs/Mean_dataset_channel_magnitude_and_phase_response_verbose.jpg')
+
+    print('\n Check the plots in the graphs folder') 
+
+
+
+

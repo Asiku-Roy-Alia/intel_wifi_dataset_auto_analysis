@@ -1,9 +1,16 @@
 
 def comm(rtt_data, sleep_time):
     import matplotlib.pyplot as plt
+    import time
+    import numpy as np
+
     data=rtt_data
-    print('Communications mode')
-    # NB: The amplitude of the channels is usually not indicative of the SNR/RSSI. The channels were scaled by the hardware.
+    print('Communications mode\n')
+
+    # NB: The amplitude of the channels is usually not indicative of the SNR/RSSI. 
+    # The channels were scaled by the hardware.
+
+    # Obtain range of tone frequencies
     freqz =312.5*1000 / 10**6   # MHz 
     tones =[freqz*i for i in range(-58,-1)] 
     tones2 = [freqz*i for i in range(2,59)]
@@ -12,14 +19,17 @@ def comm(rtt_data, sleep_time):
     # The "tone_frequencies" variable below is used to map which baseband frequency, in MHz, corresponds to each of the 114 tones.
     # Note that for 40MHz WiFi, the 3 tones around the DC are never observed
 
-    measIndex2plot=22
+    measIndex2plot=22 # Random index of transaction to plot
 
     Channel_selection = data.iloc[measIndex2plot,12:468]
     Channel_selection= np.array(Channel_selection)
+
+    # Add a channel at the end of the dataset for reshaping purposes
     ch_mean=Channel_selection[-1]
     Channel_selection=np.append(Channel_selection,ch_mean )
     example_channel_in_freq_domain =np.reshape(Channel_selection,[4,114]) 
 
+    # Convert channels from string to complex numbers
     fin_cplx_selection = np.zeros_like(example_channel_in_freq_domain)
 
     dim1=0
@@ -82,7 +92,7 @@ def comm(rtt_data, sleep_time):
     plt.title('Channel phase at AP side')
     plt.xlabel('Tone frequency[MHz]')
     plt.ylabel('Phase[rad]')
-    plt.show()
+    plt.savefig('graphs/sample_channel_magnitude_phase_responses.jpg')
 
     dataset_columns = data.columns
     Channels_in_freq_domain = list(dataset_columns[12:467]) 
@@ -162,4 +172,7 @@ def comm(rtt_data, sleep_time):
     plt.title('Channel phase at AP side')
     plt.xlabel('Tone frequency[MHz]')
     plt.ylabel('Phase[rad]')
-    plt.show()
+    plt.savefig('graphs/mean_channel_magnitude_phase_responses.jpg')
+
+    print('\nCheck resulting graphs in graphs folder')
+

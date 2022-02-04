@@ -2,6 +2,10 @@
 def dat(rtt_data,sleep_time):
     print('Data science mode')
 
+    import time
+    import numpy as np
+    import matplotlib.pyplot as plt
+    
     # Print the entire data 
     print('\nWhole dataset:\n')
     print(rtt_data) 
@@ -59,58 +63,34 @@ def dat(rtt_data,sleep_time):
     time.sleep(sleep_time)
 
     # Plot the AP X positions for all access points
+    # open figure
+    plt.figure(figsize=(12,8))
     plt.plot(rtt_data['AP_positionX[m]'], color='green', marker ='o')
     plt.title('Access Point Positions X dimension')
     plt.xlabel('Access Point ID') 
     plt.ylabel('X distance (meters) ')
-    plt.show()
-    #time.sleep(sleep_time)
-    plt.close()
+    plt.savefig('graphs/X_positions_of_all_APs.jpg')
 
-    # Plot the AP X positions for all access points
+    # open figure
+    plt.figure(figsize=(12,8))
+    # Plot the AP Y positions for all access points
     plt.plot(rtt_data['AP_positionY[m]'],marker ='o') 
     plt.title('Access Point Positions Y dimension')
     plt.xlabel('Access Point ID') 
     plt.ylabel('Y distance (meters) ')
-    plt.show()
-    #time.sleep(sleep_time)
-    plt.close()
+    plt.savefig('graphs/Y_positions_of_all_APs.jpg')
 
+    # open figure
+    plt.figure(figsize=(12,8))
     # Plot the AP X positions for all access points
     plt.plot(rtt_data['AP_positionZ[m]'],color='red', marker ='o')
     plt.title('Access Point Positions Z dimension')
     plt.xlabel('Access Point ID') 
     plt.ylabel('Z distance (meters) ')
-    plt.show()
-    #time.sleep(sleep_time)
-    plt.close()
+    plt.savefig('graphs/Z_positions_of_all_APs.jpg')
 
-    # Plot all three dimensions on the same set of subplots
-    plt.figure(figsize=(15, 3))
-    plt.subplot(131)
-    plt.plot(rtt_data['AP_positionX[m]'], color='green', marker ='o')
-    plt.title('Access Point Positions X dimension')
-    plt.xlabel('Access Point ID') 
-    plt.ylabel('X distance (meters) ')
-    plt.subplot(132)
-    plt.plot(rtt_data['AP_positionY[m]'],marker ='o') 
-    plt.title('Access Point Positions Y dimension')
-    plt.xlabel('Access Point ID') 
-    plt.ylabel('Y distance (meters) ')
-    #time.sleep(sleep_time)
-    plt.close()
-
-
-    plt.subplot(133)
-    plt.plot(rtt_data['AP_positionZ[m]'],color='red', marker ='o')
-    plt.title('Access Point Positions Z dimension')
-    plt.xlabel('Access Point ID') 
-    plt.ylabel('Z distance (meters) ')
-    plt.show()
-    #time.sleep(sleep_time)
-    plt.close()
-
-
+    # open figure
+    plt.figure(figsize=(12,8))
     # Plot all three dimensions on the same set of subplots
 
     plt.plot(rtt_data['AP_positionX[m]'], color='green', marker ='o')
@@ -119,10 +99,10 @@ def dat(rtt_data,sleep_time):
     plt.title('Access Point Positions all dimensions')
     plt.xlabel('Access Point ID')
     plt.ylabel('Distance (meters)')
-    plt.show()
-    #time.sleep(sleep_time)
-    plt.close()
+    plt.savefig('graphs/XYZ_plot_APs.jpg')
 
+    # open figure
+    plt.figure(figsize=(12,8))
     # 3D scatter plot 
     from mpl_toolkits import mplot3d
     fig = plt.figure()
@@ -131,6 +111,5 @@ def dat(rtt_data,sleep_time):
     ax.set_xlabel('x (m)')
     ax.set_ylabel('y (m)')
     ax.set_zlabel('z (m)')
-    plt.show()
-    #time.sleep(sleep_time)
-    plt.close()
+    plt.savefig('graphs/3D_scatter_plot.jpg') 
+
