@@ -104,6 +104,7 @@ def dat_v(rtt_data,sleep_time):
     plt.ylabel('Distance (meters)')
     plt.savefig('graphs/XYZ_plot_APs_verbose.jpg')
 
+
     # open figure
     plt.figure(figsize=(12,8))
     # 3D scatter plot 
@@ -115,3 +116,20 @@ def dat_v(rtt_data,sleep_time):
     ax.set_ylabel('y (m)')
     ax.set_zlabel('z (m)')
     plt.savefig('graphs/3D_scatter_plot_verbose.jpg') 
+
+    # open figure
+    plt.figure(figsize=(12,8))
+    # 3D scatter plot with clients
+    from mpl_toolkits import mplot3d
+    fig = plt.figure()
+    ax = plt.axes(projection='3d')
+    ax.scatter3D(rtt_data['AP_positionX[m]'], rtt_data['AP_positionY[m]'], rtt_data['AP_positionZ[m]'], color='g');
+    ax.scatter3D(rtt_data['GroundTruthPositionX[m]'], rtt_data['GroundTruthPositionY[m]'], rtt_data['GroundTruthPositionZ[m]'], color='r');
+
+    ax.set_xlabel('x (m)')
+    ax.set_ylabel('y (m)')
+    ax.set_zlabel('z (m)')
+    ax.legend('AP','Client')
+    plt.savefig('graphs/3D_scatter_plot_AP_client.jpg')  
+
+    
