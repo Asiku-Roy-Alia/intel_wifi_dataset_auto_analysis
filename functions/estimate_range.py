@@ -50,42 +50,48 @@ def estimate_range(selected_row_in, RTT_data):
     channels_timedomain_ap = np.fft.ifft(np.fft.ifftshift(channels_ap))
 
     '''
+    plt.figure()
     plt.plot(channels_timedomain.real, label='real')
     plt.plot(channels_timedomain.imag, '--',  label='imaginary')
-    plt.title('Client') 
+    plt.title('Client time domain channel') 
     plt.legend()
-    plt.show()
+    plt.savefig('graphs/time_domain_channels.png')
 
+    plt.figure()
     plt.plot(channels_timedomain_ap.real, label='real')
     plt.plot(channels_timedomain_ap.imag, '--',  label='imaginary') 
-    plt.title('Access point')
+    plt.title('Access point time domain channel')
     plt.legend()
-    plt.show()
+    plt.savefig('graphs/time_domain_channels_ap.png')
 
-    
+    plt.figure()
     plt.plot(np.abs(channels_timedomain))
     plt.xlabel('Time index')
     plt.ylabel('Channel Magnitude')
     plt.title('Channel magnitudes')
-    '''    
+    plt.savefig('graphs/time_domain_channels.png')  
+    ''' 
 
     N_samples_to_shift = 13; # integer number of samples to circular shift
     channel_time_domain_circ_shifted = np.roll(channels_timedomain, N_samples_to_shift)
     channel_time_domain_circ_shifted_ap = np.roll(channels_timedomain_ap, N_samples_to_shift)
-
     '''
+    plt.figure()
     plt.plot(channel_time_domain_circ_shifted.real, label='real')
     plt.plot(channel_time_domain_circ_shifted.imag, '--',  label='imaginary') 
     plt.title('Channels circular shifted')
     plt.legend()
-    plt.show()
+    plt.savefig('graphs/channels_time_domain_circularshifted.png')
 
+    plt.figure()
     plt.plot(channel_time_domain_circ_shifted_ap.real, label='real')
     plt.plot(channel_time_domain_circ_shifted_ap.imag, '--',  label='imaginary') 
     plt.title('AP channels circular shifted')
     plt.legend()
-    plt.show()
+    #plt.show()
+    plt.savefig('graphs/channels_time_domain_circularshifted.png')
     '''
+
 
     est_ToA_index_client = np.argmax(channel_time_domain_circ_shifted)
 
@@ -101,7 +107,7 @@ def estimate_range(selected_row_in, RTT_data):
     est_ToA_client = (est_ToA_index_client - 1)*delta_time_per_sample  # estimated client ToA in seconds
     est_ToA_AP     = (est_ToA_index_AP - 1)*delta_time_per_sample      # estimated AP ToA in seconds
 
-    print('Client ToA estimate:',est_ToA_client,'AP ToA estimate: ', est_ToA_AP)
+    #print('Client ToA estimate:',est_ToA_client,'AP ToA estimate: ', est_ToA_AP)
 
     # Calculate estimated range and range error
     ToD_factor = selected_data['ToD_factor[m]'] # in meters RTT_data(:,ind.ToDfactor)
@@ -109,7 +115,7 @@ def estimate_range(selected_row_in, RTT_data):
     GT_range = selected_data['GroundTruthRange[m]'] # ground truth range for this measurement [m]
     ml_range_estimate = selected_data['ML_range_estimate[m]']
     range_error = est_range - GT_range # estimated range error [m] 
-    print('ToD factor',ToD_factor,'estimated range',est_range,'Ground truth range', GT_range, 'range error', range_error,'n','ML range estimate',ml_range_estimate)
+    #print('ToD factor',ToD_factor,'estimated range',est_range,'Ground truth range', GT_range, 'range error', range_error,'n','ML range estimate',ml_range_estimate)
 
     return est_range, GT_range,ml_range_estimate
 

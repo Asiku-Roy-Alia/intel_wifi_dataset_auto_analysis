@@ -1,4 +1,8 @@
 
+from cProfile import label
+from matplotlib.pyplot import legend
+
+
 def dat_v(rtt_data,sleep_time):
     print('Verbose data science mode')
 
@@ -123,13 +127,13 @@ def dat_v(rtt_data,sleep_time):
     from mpl_toolkits import mplot3d
     fig = plt.figure()
     ax = plt.axes(projection='3d')
-    ax.scatter3D(rtt_data['AP_positionX[m]'], rtt_data['AP_positionY[m]'], rtt_data['AP_positionZ[m]'], color='g');
-    ax.scatter3D(rtt_data['GroundTruthPositionX[m]'], rtt_data['GroundTruthPositionY[m]'], rtt_data['GroundTruthPositionZ[m]'], color='r');
+    ax.scatter3D(rtt_data['AP_positionX[m]'], rtt_data['AP_positionY[m]'], rtt_data['AP_positionZ[m]'], color='g', label='AP');
+    ax.scatter3D(rtt_data['GroundTruthPositionX[m]'], rtt_data['GroundTruthPositionY[m]'], rtt_data['GroundTruthPositionZ[m]'], color='r', label='Client');
 
     ax.set_xlabel('x (m)')
     ax.set_ylabel('y (m)')
     ax.set_zlabel('z (m)')
-    ax.legend('AP','Client')
+    ax.legend()
     plt.savefig('graphs/3D_scatter_plot_AP_client.jpg')  
 
     
