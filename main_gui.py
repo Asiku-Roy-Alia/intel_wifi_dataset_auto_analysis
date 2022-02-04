@@ -14,12 +14,11 @@ from numpy import linspace
 from fitter import Fitter
 
 
-
 def make_window(theme):
     sg.theme(theme)
     menu_def = [['Application', ['Exit']],
                 ['Help', ['About']]]
-    menu_def = [['File', ['Open', 'Save', 'Properties', 'xit' ]],
+    menu_def = [['File', ['Open', 'Save', 'Properties', 'Exit' ]],
                 ['Edit', ['Paste', ['Special', 'Normal',], 'Undo'],],
                 ['Toolbar', ['---', 'Sample', 'Delay', '---', 'Display', 'Visualize']],
                 ['Help', 'About...'],]
@@ -51,7 +50,7 @@ def make_window(theme):
                                       'Channel_amplitude_client_mean','Channel_amplitude_ap_mean','Channel_phase_client_mean','Channel_phase_ap_mean'),
                               default_value='Plot_ap_x', readonly=True, k='Combo'),
                      sg.Button('Draw plot')],
-                    [sg.Text('use this to test whether the application is running well'),
+                    [sg.Text('Application running'),
                      sg.Image(data=sg.DEFAULT_BASE64_LOADING_GIF, enable_events=True, key='-GIF-IMAGE-'), ],
                     [sg.Multiline(key='Mul_line', size=(60,20))],
                     [sg.Button(image_data=sg.DEFAULT_BASE64_ICON, key='-LOGO-')]]
@@ -88,8 +87,8 @@ def make_window(theme):
                                 enable_events=True)],
                     [sg.Button("Set Theme")]]
 
-    layout = [[sg.Text('Input datapath'),
-               sg.Input(default_text=r'E:\Master\Next Generation Networks\ngn-20211230T204153Z-001\ngn\execution\data\Data\RTT_data.csv',
+    layout = [[sg.Text('Input dataset path'),
+               sg.Input(default_text=r'RTT_dataset_sample.csv',
                         key='Input_dataset_path',expand_x=True,expand_y=True),
                sg.Button('Load_data'),
                sg.Button('Select and load')]]
@@ -97,7 +96,7 @@ def make_window(theme):
                               sg.Tab('Log Output', logging_layout),
                               sg.Tab('Theme Layout',  theme_layout)]], key='-TAB GROUP-')]]
 
-    return sg.Window('All Elements Demo', layout, right_click_menu=right_click_menu_def)
+    return sg.Window('RTT Data Automated Analysis', layout, right_click_menu=right_click_menu_def)
 
 def draw_figure(canvas, figure):
     figure_canvas_agg = FigureCanvasTkAgg(figure, canvas)
@@ -167,10 +166,10 @@ def main():
 
                 # to test whether the dataset is empty
                 if len(dataset) == 0:
-                    window['Mul_line'].print('Load succeed! The dataset is empty')
+                    window['Mul_line'].print('Dataset loaded successfully! The dataset is empty')
                 else:
                     # in this situation, the dataset might be empty, maybe return the amount of empty columns that presist
-                    window['Mul_line'].print('Load succeed!')
+                    window['Mul_line'].print('Dataset loaded successfully!')
 
         # if put 'Select and load' and 'Load_data' together, it runs slowly!
         elif event == 'Select and load':
@@ -189,9 +188,9 @@ def main():
                     dataset = pd.read_excel(dataset_path)
 
                 if len(dataset) == 0:
-                    window['Mul_line'].print('Load succeed! The dataset is empty')
+                    window['Mul_line'].print('Data loaded successfully! The dataset is empty')
                 else:
-                    window['Mul_line'].print('Load succeed!')
+                    window['Mul_line'].print('Data loaded successfully!')
 
         elif event == 'Show data':#consider number is out of range
 
@@ -947,18 +946,6 @@ def main():
                     # plt.show()
                     fig = plt.gcf()
                     make_plot_window('Channel_phase_ap_mean','Channel_phase_ap_mean',fig)
-
-
-
-
-
-
-
-
-
-
-
-
 
         # elif event == 'About':
         #     print("[LOG] Clicked About!")

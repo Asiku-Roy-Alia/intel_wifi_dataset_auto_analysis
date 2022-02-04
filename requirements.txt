@@ -1,0 +1,7 @@
+matplotlib
+numpy
+PySimpleGUI
+pandas
+mpl_toolkits
+scipy
+fitter
