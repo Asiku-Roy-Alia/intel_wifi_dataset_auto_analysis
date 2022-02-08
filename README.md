@@ -47,7 +47,8 @@ The interface is simple and basic enough for easy use.
   -    range_est_graphs.py Range estimator with graphs
 *     graphs: Folder for storing graphs from the main programs
 
-
+## Constraint on dataset
+The dataset should be in the general form given in 'RTT_dataset_sample.csv' above in terms of columns and their content.
 
 
 
