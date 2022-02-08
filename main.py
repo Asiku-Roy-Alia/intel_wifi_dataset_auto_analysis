@@ -1,3 +1,5 @@
+# Import required modules 
+
 from ast import arg
 from unicodedata import name
 import pandas as pd
@@ -11,13 +13,15 @@ from functions.dat_v import dat_v
 from functions.rangest import rangest
 from functions.stats_model import stats_model
 
-
+# Main function
 def main():
+
     import argparse
     import sys
     import os
     from tabnanny import verbose
 
+    # Argument parser
     parser = argparse.ArgumentParser()
 
     # Add arguments
@@ -54,26 +58,33 @@ def main():
 
     time.sleep(sleep_time)
 
+    # Define modes 
+
+    # Communications mode, not verbose
     if mode=='c' and not verbosity_level:
-        comm(rtt_data, sleep_time)
-        stats_model(rtt_data) 
-        rangest(rtt_data)
+        comm(rtt_data, sleep_time) # Communications
+        stats_model(rtt_data)  # Statistical modelling
+        rangest(rtt_data)   # Range estimation
         
+    # Communications mode, verbose
     elif mode=='c' and verbosity_level:
         comm_v(rtt_data, sleep_time) 
         stats_model(rtt_data)
         rangest(rtt_data)
 
+    # Data science mode, not verbose
     elif mode=='d' and not verbosity_level:
-        dat(rtt_data, sleep_time)
+        dat(rtt_data, sleep_time) # Data science
         stats_model(rtt_data)
         rangest(rtt_data)
 
+    # Data science mode, verbose
     elif mode=='d' and verbosity_level:
         dat_v(rtt_data, sleep_time)
         stats_model(rtt_data)
         rangest(rtt_data)
 
+    # Communications + Data science + verbose
     else:
         default()
         dat_v(rtt_data, sleep_time)

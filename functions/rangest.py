@@ -1,4 +1,5 @@
 def rangest(input_df):
+    # Imports
     from cProfile import label
     import pandas as pd 
     import matplotlib.pyplot as plt 
@@ -11,13 +12,14 @@ def rangest(input_df):
     ml_estimate = []
     range_estimate = [] 
 
-
+    # Range estimation
     for i in range(1,102):
         [a,b,c] = estimate_range(i,input_df) 
         true_range.append(b)
         ml_estimate.append(c) 
         range_estimate.append(a) 
 
+    # Get and process range errors
     range_errors_raw = [true_range[i]-range_estimate[i] for i in range(len(true_range))] 
     range_errors_raw=np.array(range_errors_raw)
     ml_range_errors = [true_range[i]-ml_estimate[i] for i in range(len(true_range))]
@@ -32,6 +34,7 @@ def rangest(input_df):
     y_rnd = np.random.random_integers(1,50,num_observations)
     z_rnd = np.random.random_integers(1,50,num_observations)
 
+    # Make plots of ranges and errors
     plt.figure(figsize=(12,8))
     plt.plot(range_errors_raw,label='range errors uncorrected')
     plt.plot(range_errors,label='range errors corrected')

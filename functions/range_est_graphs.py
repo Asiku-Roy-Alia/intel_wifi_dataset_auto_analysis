@@ -49,42 +49,42 @@ def estimate_range(selected_row_in, RTT_data):
     channels_timedomain = np.fft.ifft(np.fft.ifftshift(channels_client))
     channels_timedomain_ap = np.fft.ifft(np.fft.ifftshift(channels_ap))
 
-
-    plt.plot(channels_timedomain.real, label='real')
-    plt.plot(channels_timedomain.imag, '--',  label='imaginary')
-    plt.title('Client') 
-    plt.legend()
-    plt.show()
-
-    plt.plot(channels_timedomain_ap.real, label='real')
-    plt.plot(channels_timedomain_ap.imag, '--',  label='imaginary') 
-    plt.title('Access point')
-    plt.legend()
-    plt.show()
-
-    
-    plt.plot(np.abs(channels_timedomain))
-    plt.xlabel('Time index')
-    plt.ylabel('Channel Magnitude')
-    plt.title('Channel magnitudes')
-     
-
     N_samples_to_shift = 13; # integer number of samples to circular shift
     channel_time_domain_circ_shifted = np.roll(channels_timedomain, N_samples_to_shift)
     channel_time_domain_circ_shifted_ap = np.roll(channels_timedomain_ap, N_samples_to_shift)
 
 
-    plt.plot(channel_time_domain_circ_shifted.real, label='real')
-    plt.plot(channel_time_domain_circ_shifted.imag, '--',  label='imaginary') 
-    plt.title('Channels circular shifted')
-    plt.legend()
-    plt.show()
+    if selected_row_in==2:
+        plt.plot(channels_timedomain.real, label='real')
+        plt.plot(channels_timedomain.imag, '--',  label='imaginary')
+        plt.title('Client') 
+        plt.legend()
+        plt.show()
 
-    plt.plot(channel_time_domain_circ_shifted_ap.real, label='real')
-    plt.plot(channel_time_domain_circ_shifted_ap.imag, '--',  label='imaginary') 
-    plt.title('AP channels circular shifted')
-    plt.legend()
-    plt.show()
+        plt.plot(channels_timedomain_ap.real, label='real')
+        plt.plot(channels_timedomain_ap.imag, '--',  label='imaginary') 
+        plt.title('Access point')
+        plt.legend()
+        plt.show()
+
+        
+        plt.plot(np.abs(channels_timedomain))
+        plt.xlabel('Time index')
+        plt.ylabel('Channel Magnitude')
+        plt.title('Channel magnitudes')
+     
+
+        plt.plot(channel_time_domain_circ_shifted.real, label='real')
+        plt.plot(channel_time_domain_circ_shifted.imag, '--',  label='imaginary') 
+        plt.title('Channels circular shifted')
+        plt.legend()
+        plt.show()
+
+        plt.plot(channel_time_domain_circ_shifted_ap.real, label='real')
+        plt.plot(channel_time_domain_circ_shifted_ap.imag, '--',  label='imaginary') 
+        plt.title('AP channels circular shifted')
+        plt.legend()
+        plt.show()
     
 
     est_ToA_index_client = np.argmax(channel_time_domain_circ_shifted)
@@ -112,5 +112,3 @@ def estimate_range(selected_row_in, RTT_data):
     print('ToD factor',ToD_factor,'estimated range',est_range,'Ground truth range', GT_range, 'range error', range_error,'n','ML range estimate',ml_range_estimate)
 
     return est_range, GT_range,ml_range_estimate
-
-

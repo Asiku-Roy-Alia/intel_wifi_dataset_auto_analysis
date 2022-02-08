@@ -49,6 +49,7 @@ def estimate_range(selected_row_in, RTT_data):
     channels_timedomain = np.fft.ifft(np.fft.ifftshift(channels_client))
     channels_timedomain_ap = np.fft.ifft(np.fft.ifftshift(channels_ap))
 
+    # Plot graphs
     '''
     plt.figure()
     plt.plot(channels_timedomain.real, label='real')
@@ -92,7 +93,7 @@ def estimate_range(selected_row_in, RTT_data):
     plt.savefig('graphs/channels_time_domain_circularshifted.png')
     '''
 
-
+    # Estimate time of arrival of client and AP
     est_ToA_index_client = np.argmax(channel_time_domain_circ_shifted)
 
     est_ToA_index_AP = np.argmax(channel_time_domain_circ_shifted_ap)

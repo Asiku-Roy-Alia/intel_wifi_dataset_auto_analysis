@@ -22,6 +22,7 @@ def comm_v(rtt_data, sleep_time):
     
     print('\nTone frequencies used: \n', tone_frequencies)
     time.sleep(sleep_time)
+
     # The "tone_frequencies" variable below is used to map which baseband frequency,
     #  in MHz, corresponds to each of the 114 tones.
     # Note that for 40MHz WiFi, the 3 tones around the DC are never observed
@@ -79,10 +80,11 @@ def comm_v(rtt_data, sleep_time):
     print('\nAP phases: ', ap_phase, ap_phase1)
 
     print('\n Drawing graphs for chosen example')
+
     # open figure
     plt.figure(figsize=(10,8))
     # Plot client side amplitude.
-    plt.title('Example channel in frequency domain')
+    plt.title('Sample channel in frequency domain')
     plt.subplot(2,2,1)
     plt.plot(tone_frequencies, client_magnitude, tone_frequencies,client_magnitude1)
     plt.title('Channel amplitude at client side')
@@ -115,6 +117,7 @@ def comm_v(rtt_data, sleep_time):
     dataset_columns = data.columns
     Channels_in_freq_domain = list(dataset_columns[12:467]) 
 
+    # Do the same for the mean response of all channels in dataset
     freqz =312.5*1000 / 10**6   # MHz 
     tones =[freqz*i for i in range(-58,-1)] 
     tones2 = [freqz*i for i in range(2,59)]

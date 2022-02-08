@@ -144,7 +144,7 @@ def comm(rtt_data, sleep_time):
     # open figure
     plt.figure(figsize=(12,8))
     # Plot client side amplitude.
-    plt.title('Example channel in frequency domain')
+    plt.title('Sample channel in frequency domain')
     plt.subplot(2,2,1)
     plt.plot(tone_frequencies, client_magnitude, tone_frequencies,client_magnitude1)
     plt.title('Channel amplitude at client side')

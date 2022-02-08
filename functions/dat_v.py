@@ -1,17 +1,15 @@
-
-from cProfile import label
-from matplotlib.pyplot import legend
-
-
 def dat_v(rtt_data,sleep_time):
     print('Verbose data science mode')
 
     import time
     import numpy as np
     import matplotlib.pyplot as plt
+    from cProfile import label
+    from matplotlib.pyplot import legend
 
     time.sleep(sleep_time)
-    # Print the entire data 
+
+    # Print the whole dataset 
     print('\n Print out the whole dataset:\n')
     print(rtt_data) 
     time.sleep(sleep_time)
