@@ -1,3 +1,5 @@
+# Import required modules 
+
 import os
 from matplotlib.ticker import NullFormatter  # useful for `logit` scale
 import matplotlib.pyplot as plt
